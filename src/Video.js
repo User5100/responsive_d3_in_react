@@ -6,6 +6,7 @@ import 'rxjs/add/operator/take'
 import 'rxjs/add/operator/switchMap'
 
 import { Visualisation } from './Visualisation'
+import { Waveform } from './Waveform'
 
 export class Video extends Component {
 	constructor () {
@@ -39,6 +40,8 @@ export class Video extends Component {
 
 		//Connect source to analyser
 		this.source.connect(this.analyser)
+
+		this.source.connect(this.audioCtx.destination)
 
 		//Create a new array to recieve the data
 		this.analyser.fftSize = 2048
@@ -90,6 +93,7 @@ export class Video extends Component {
 					dataArray={this.state.dataArray}
 					data={this.state.data}
 				/>
+				<Waveform />
 			</div>
 		)
 	}
