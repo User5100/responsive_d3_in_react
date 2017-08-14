@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Chart } from './Chart'
+//import { Chart } from './Chart'
+import { Video } from './Video'
 
 class App extends Component {
   render () {
@@ -7,7 +8,7 @@ class App extends Component {
 			<div>
 				<div>Hello, world</div>
 				<div style={{ width: '80%', height: '80%' }}>
-					<Chart />
+					<Video />
 				</div>
 			</div>
 		)
