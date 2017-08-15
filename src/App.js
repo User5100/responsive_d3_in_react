@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 //import { Chart } from './Chart'
-import { Video } from './Video'
+import { Home } from './Home'
 
 class App extends Component {
   render () {
 		return (
-			<div>
-				<div>Hello, world</div>
-				<div style={{ width: '80%', height: '80%' }}>
-					<Video />
-				</div>
-			</div>
+			<MuiThemeProvider>
+				<Home />
+			</MuiThemeProvider>
 		)
 	}  
 }

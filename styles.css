@@ -1,3 +1,91 @@
 body {
   margin: 0;
 }
+
+.waveform-container {
+  flex: 9;
+  margin-top: 16px;
+}
+
+.button-container {
+  flex: 1;
+  margin-left: 56px;
+}
+
+.player-container {
+  border: none;
+  border-radius: 4px;
+  grid-area: player;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: center;
+
+}
+
+.topics-container {
+  border: none;
+  border-radius: 4px;
+  grid-area: topics;
+}
+
+.topics-paper {
+  overflow-y: scroll;
+}
+
+.transcript-container {
+  border: none;
+  border-radius: 4px;
+  grid-area: transcript;
+}
+
+svg {
+  margin-left: 2%;
+}
+
+.transcript-paper {
+  overflow-y: scroll;
+}
+
+.transcript-words {
+  margin: 20px;
+}
+
+
+.container {
+  display: grid;
+  grid-gap: 1px;
+  height: 100vh;
+  grid-template-areas: 
+    "topics"
+    "transcript"
+    "player";
+  overflow: none;
+}
+
+.highlight {
+  text-decoration: underline;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+@media (min-width: 700px) {
+  .container {
+    display: grid;
+    grid-gap: 20px;
+    height: 94vh;
+    grid-template: [main-top] "topics transcript transcript" 76% [main-bottom]
+                   [footer-top] "player player player" 14% [footer-bottom]
+                                /2fr 4fr 4fr;
+    margin: 20px;
+    overflow: none;
+  }
+}
