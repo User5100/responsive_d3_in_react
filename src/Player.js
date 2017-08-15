@@ -10,7 +10,12 @@ export class Player extends Component {
 		super()
 
 		this.handlePlayClick = this.handlePlayClick.bind(this)
-    this.handlePauseClick = this.handlePauseClick.bind(this)
+		this.handlePauseClick = this.handlePauseClick.bind(this)
+		this.setRange = this.setRange.bind(this)
+	}
+
+	setRange (range) {
+		this.props.setRange(range)
 	}
 
 	handlePlayClick () {
@@ -41,7 +46,8 @@ export class Player extends Component {
 							className='button-container'>
 							{button}
 						</div>
-						<Waveform />
+						<Waveform
+							setRange={this.setRange} />
 					</div>
 				</Paper>
 			</div>

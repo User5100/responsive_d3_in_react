@@ -22,7 +22,8 @@ export class Home extends Component {
 			dataArray: [],
 			data: [],
 			isPlaying: false,
-			currentTime: 0
+			currentTime: 0,
+			range: { start: 0, end: 0 }
 		}
 		this.src = 'https://s3.amazonaws.com/mettavr/dev/VfE_html5.mp4'
 
@@ -34,11 +35,15 @@ export class Home extends Component {
 		this.fetchData = this.fetchData.bind(this)
 		this.handleAudioTimeUpdate = this.handleAudioTimeUpdate.bind(this)
 		this.handleSetCurrentTime = this.handleSetCurrentTime.bind(this)
+		this.setRange = this.setRange.bind(this)
+	}
+
+	setRange (range) {
+		this.setState({ range: range })
 	}
 
 	handleSetCurrentTime (timestamp) {
-		console.log('handleClickTag', timestamp)
-		this.audio.currentTime = (timestamp < 5)? (this.audio.currentTime) : (timestamp - 5) 
+		this.audio.currentTime = (timestamp < 5)? 0 : (timestamp - 5) 
 	}
 
 	handleAudioTimeUpdate () {
@@ -47,8 +52,7 @@ export class Home extends Component {
 
 	fetchData () {
 		axios.get(BASE_URL)
-					 .then(res => {
-						 
+					 .then(res => {					 
 						 return res.data
 					 })
            .then(data => {
@@ -156,12 +160,14 @@ export class Home extends Component {
 					currentTime={this.state.currentTime}
 					dataArray={this.state.dataArray}
 					handleClickWord={this.handleSetCurrentTime}
+					start={this.state.range.start}
 				/>
 
 				<Player
 					isPlaying={this.state.isPlaying}
 					handlePauseClick={this.handlePauseClick}
 					handlePlayClick={this.handlePlayClick}
+					setRange={this.setRange}
 				/>
 			</div>
 		</div>

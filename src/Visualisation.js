@@ -29,6 +29,7 @@ export class Visualisation extends Component {
 
 		//Update
 		this.update = this.svg
+											.attr('class', 'win-amp')
 											.append('g')
 												.attr('transform', `translate(${this.margin.left}, ${this.margin.top})`)
 												.selectAll('rect')
@@ -65,11 +66,16 @@ export class Visualisation extends Component {
 		
 		this.t = d3
 							.transition()
-							.duration(0)
-		
+							.duration(0)	
 	}
 
 	shouldComponentUpdate() {
+		//console.log(this.props.start)
+		if(this.paper) {
+			//this.paper.scrollTop = this.props.start * this.paper.scrollTop.height		
+			//console.log('paper: ', this.paper)
+		}
+	
 		this.xScale = d3.scaleLinear()
 										.domain([50, 100])
 										.range([0, this.width])
@@ -91,8 +97,10 @@ export class Visualisation extends Component {
 		let currentTime = this.props.currentTime
 
 		return (
-			<div className='transcript-container noselect'>
-				<Paper 
+			<div 
+				className='transcript-container noselect'>
+				<Paper
+					ref={paper => this.paper = paper}
 					style={styles.paper}zDepth={1}
 					className='transcript-paper'>
 
